@@ -33,7 +33,7 @@ Se tomó como referencia visual general el estilo de dashboards modernos de inve
 ## Estructura del proyecto
 
 ```text
-the_chill_inventory_dashboard/
+umb-the-chill-inventory-dashboard/
 ├── index.html
 ├── styles.css
 ├── assets/
