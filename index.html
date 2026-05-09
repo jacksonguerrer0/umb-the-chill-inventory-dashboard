@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dashboard administrativo responsive para controlar el inventario de The Chill." />
+  <title>The Chill | Inventario</title>
+  <link rel="icon" href="./assets/logo.png" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <input class="sidebar-control" type="checkbox" id="sidebar-control" aria-label="Abrir o cerrar menú lateral" />
+  <label class="sidebar-backdrop" for="sidebar-control" aria-hidden="true"></label>
+
+  <div class="app-shell">
+    <aside class="sidebar" role="navigation" aria-label="Navegación principal">
+      <div class="brand">
+        <img class="brand-logo" src="./assets/logo.png" alt="Logo de The Chill" />
+        <div class="brand-copy">
+          <strong>The Chill</strong>
+          <span>Inventario</span>
+        </div>
+      </div>
+
+      <label class="sidebar-button" for="sidebar-control" tabindex="0" aria-label="Abrir o cerrar menú">
+        <span class="sidebar-icon sidebar-icon-menu" aria-hidden="true">☰</span>
+        <span class="sidebar-icon sidebar-icon-close" aria-hidden="true">×</span>
+        <span class="sidebar-icon sidebar-icon-expand" aria-hidden="true">›</span>
+
+        <span class="sidebar-button-text sidebar-text-collapse">Contraer menú</span>
+        <span class="sidebar-button-text sidebar-text-close">Cerrar menú</span>
+      </label>
+
+      <nav class="nav-list" aria-label="Secciones del dashboard">
+        <a class="nav-link nav-link-active" href="#overview">
+          <span aria-hidden="true">🏠</span>
+          <span>Resumen</span>
+        </a>
+        <a class="nav-link" href="#inventory">
+          <span aria-hidden="true">📦</span>
+          <span>Inventario</span>
+        </a>
+        <a class="nav-link" href="#categories">
+          <span aria-hidden="true">📊</span>
+          <span>Categorías</span>
+        </a>
+        <a class="nav-link" href="#tasks">
+          <span aria-hidden="true">✓</span>
+          <span>Tareas</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-summary" aria-label="Resumen operativo del inventario">
+        <span>Meta operativa</span>
+        <strong>5 días</strong>
+        <p>El mínimo recomendado busca evitar faltantes sin aumentar compras innecesarias.</p>
+      </div>
+    </aside>
+
+    <header class="header" role="banner">
+      <label class="mobile-menu-button" for="sidebar-control" tabindex="0" aria-label="Abrir menú lateral">
+        <span aria-hidden="true">☰</span>
+      </label>
+
+      <div class="header-title">
+        <p class="overline">Dashboard administrativo</p>
+        <h1>Control de inventario</h1>
+      </div>
+
+      <form class="search-form" role="search" aria-label="Buscar insumos">
+        <label class="sr-only" for="search-input">Buscar insumo</label>
+        <input id="search-input" type="search" placeholder="Buscar insumo..." />
+      </form>
+
+      <div class="header-actions" aria-label="Acciones rápidas">
+        <button class="button button-secondary" type="button">Exportar</button>
+        <button class="button button-primary" type="button">Nuevo conteo</button>
+      </div>
+    </header>
+
+    <main class="main" id="main-content" role="main">
+      <section class="hero-panel" id="overview" aria-labelledby="overview-title">
+        <div>
+          <p class="overline">The Chill · Local principal</p>
+          <h2 id="overview-title">Inventario listo para revisar antes del cierre</h2>
+          <p class="hero-text">
+            Este panel permite ver qué insumos están críticos, cuáles deben reponerse y qué productos se mantienen estables para la operación diaria.
+          </p>
+        </div>
+
+        <div class="hero-metric">
+          <span>Salud del inventario</span>
+          <strong>78%</strong>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics-grid" aria-label="Indicadores principales">
+        <article class="metric-card">
+          <span class="metric-label">Stock crítico</span>
+          <strong class="metric-value">4</strong>
+          <p>Insumos por debajo del mínimo.</p>
+        </article>
+
+        <article class="metric-card">
+          <span class="metric-label">Por reponer</span>
+          <strong class="metric-value">9</strong>
+          <p>Productos cercanos al punto mínimo.</p>
+        </article>
+
+        <article class="metric-card">
+          <span class="metric-label">Estables</span>
+          <strong class="metric-value">18</strong>
+          <p>Disponibles para operar sin novedad.</p>
+        </article>
+
+        <article class="metric-card">
+          <span class="metric-label">Vencimientos</span>
+          <strong class="metric-value">2</strong>
+          <p>Lotes que deben rotarse primero.</p>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel inventory-panel" id="inventory" aria-labelledby="inventory-title">
+          <div class="panel-heading">
+            <div>
+              <p class="overline">Conteo físico</p>
+              <h2 id="inventory-title">Inventario principal</h2>
+            </div>
+            <span class="panel-chip">Actualizado hoy</span>
+          </div>
+
+          <div class="table-scroll">
+            <table>
+              <caption>
+                Tabla de inventario con insumo, categoría, unidad de medida, cantidad actual, cantidad mínima y estado.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Insumo</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Unidad</th>
+                  <th scope="col">Actual</th>
+                  <th scope="col">Mínimo</th>
+                  <th scope="col">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Insumo">Mango biche</td>
+                  <td data-label="Categoría">Fruta</td>
+                  <td data-label="Unidad">kg</td>
+                  <td data-label="Actual">3</td>
+                  <td data-label="Mínimo">6</td>
+                  <td data-label="Estado"><span class="status status-danger">Crítico</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Insumo">Vasos de soda</td>
+                  <td data-label="Categoría">Empaque</td>
+                  <td data-label="Unidad">unidad</td>
+                  <td data-label="Actual">80</td>
+                  <td data-label="Mínimo">150</td>
+                  <td data-label="Estado"><span class="status status-warning">Reponer</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Insumo">Sirop blue</td>
+                  <td data-label="Categoría">Bebida</td>
+                  <td data-label="Unidad">litro</td>
+                  <td data-label="Actual">5</td>
+                  <td data-label="Mínimo">4</td>
+                  <td data-label="Estado"><span class="status status-ok">Bien</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Insumo">Gomitas aros</td>
+                  <td data-label="Categoría">Topping</td>
+                  <td data-label="Unidad">bolsa</td>
+                  <td data-label="Actual">1</td>
+                  <td data-label="Mínimo">3</td>
+                  <td data-label="Estado"><span class="status status-danger">Crítico</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Insumo">Limones</td>
+                  <td data-label="Categoría">Fruta</td>
+                  <td data-label="Unidad">kg</td>
+                  <td data-label="Actual">8</td>
+                  <td data-label="Mínimo">7</td>
+                  <td data-label="Estado"><span class="status status-ok">Bien</span></td>
+                </tr>
+                <tr>
+                  <td data-label="Insumo">Pitillos de cartón</td>
+                  <td data-label="Categoría">Empaque</td>
+                  <td data-label="Unidad">paquete</td>
+                  <td data-label="Actual">2</td>
+                  <td data-label="Mínimo">4</td>
+                  <td data-label="Estado"><span class="status status-warning">Reponer</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="panel tasks-panel" id="tasks" aria-labelledby="tasks-title">
+          <div class="panel-heading">
+            <div>
+              <p class="overline">Acciones</p>
+              <h2 id="tasks-title">Prioridades</h2>
+            </div>
+          </div>
+
+          <div class="task-list">
+            <article class="task-card">
+              <span class="task-dot task-danger" aria-hidden="true"></span>
+              <div>
+                <strong>Comprar mango biche</strong>
+                <p>Está por debajo del mínimo operativo.</p>
+              </div>
+            </article>
+
+            <article class="task-card">
+              <span class="task-dot task-warning" aria-hidden="true"></span>
+              <div>
+                <strong>Revisar empaques</strong>
+                <p>Vasos y pitillos pueden agotarse rápido en horas pico.</p>
+              </div>
+            </article>
+
+            <article class="task-card">
+              <span class="task-dot task-ok" aria-hidden="true"></span>
+              <div>
+                <strong>Rotar vencimientos</strong>
+                <p>Usar primero frutas y siropes con fecha más cercana.</p>
+              </div>
+            </article>
+          </div>
+        </aside>
+
+        <article class="panel categories-panel" id="categories" aria-labelledby="categories-title">
+          <div class="panel-heading">
+            <div>
+              <p class="overline">Consumo semanal</p>
+              <h2 id="categories-title">Categorías principales</h2>
+            </div>
+          </div>
+
+          <div class="category-list" role="img" aria-label="Barras de consumo aproximado por categoría">
+            <div class="category-row">
+              <span>Empaques</span>
+              <div class="bar"><span class="bar-value bar-92"></span></div>
+              <strong>92%</strong>
+            </div>
+            <div class="category-row">
+              <span>Frutas</span>
+              <div class="bar"><span class="bar-value bar-76"></span></div>
+              <strong>76%</strong>
+            </div>
+            <div class="category-row">
+              <span>Bebidas</span>
+              <div class="bar"><span class="bar-value bar-64"></span></div>
+              <strong>64%</strong>
+            </div>
+            <div class="category-row">
+              <span>Toppings</span>
+              <div class="bar"><span class="bar-value bar-48"></span></div>
+              <strong>48%</strong>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p>The Chill · Inventario operativo</p>
+    </footer>
+  </div>
+</body>
+</html>
